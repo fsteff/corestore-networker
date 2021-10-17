@@ -1,6 +1,6 @@
 const { NanoresourcePromise: Nanoresource } = require('nanoresource-promise/emitter')
 const HypercoreProtocol = require('hypercore-protocol')
-const hyperswarm = require('hyperswarm')
+const Hyperswarm = require('hyperswarm')
 const codecs = require('codecs')
 const pump = require('pump')
 const maybe = require('call-me-maybe')
@@ -148,7 +148,7 @@ class CorestoreNetworker extends Nanoresource {
     const self = this
     if (this.swarm) return
 
-    this.swarm = hyperswarm({
+    this.swarm = new Hyperswarm({
       ...this.opts,
       announceLocalNetwork: true,
       queue: { multiplex: true }

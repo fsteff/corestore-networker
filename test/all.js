@@ -1,6 +1,6 @@
 const test = require('tape')
 const ram = require('random-access-memory')
-const dht = require('@hyperswarm/dht')
+const DHT = require('@hyperswarm/dht')
 const hypercoreCrypto = require('hypercore-crypto')
 const HypercoreProtocol = require('hypercore-protocol')
 const Corestore = require('corestore')
@@ -510,17 +510,15 @@ test('onauthentication hook', async t => {
 
 async function create (opts = {}) {
   if (!bootstrap) {
-    bootstrap = dht({
-      bootstrap: false
-    })
-    bootstrap.listen(BOOTSTRAP_PORT)
+    bootstrap = DHT.bootstrapper(BOOTSTRAP_PORT, {bootstrap: []})
+    //await bootstrap.listen(BOOTSTRAP_PORT)
     await new Promise(resolve => {
       return bootstrap.once('listening', resolve)
     })
   }
   const store = new Corestore(ram)
   await store.ready()
-  const networker = new CorestoreNetworker(store, { ...opts, bootstrap: `localhost:${BOOTSTRAP_PORT}` })
+  const networker = new CorestoreNetworker(store, { ...opts, bootstrap: [`localhost:${BOOTSTRAP_PORT}`] })
   return { store, networker }
 }
 
