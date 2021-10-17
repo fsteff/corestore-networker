@@ -1,18 +1,18 @@
 {
   "name": "@corestore/networker",
-  "version": "1.2.0",
+  "version": "1.2.0-beta",
   "description": "A corestore networking module based on Hyperswarm.",
   "main": "index.js",
   "dependencies": {
     "call-me-maybe": "^1.0.1",
     "codecs": "^2.1.0",
     "hypercore-protocol": "^8.0.0",
-    "hyperswarm": "^2.14.1",
+    "hyperswarm": "^3.0.0-rc.0",
     "nanoresource-promise": "^1.2.2",
     "pump": "^3.0.0"
   },
   "devDependencies": {
-    "@hyperswarm/dht": "^4.0.1",
+    "@hyperswarm/dht": "^5.0.0-rc.12",
     "corestore": "^5.0.0",
     "hypercore-crypto": "^2.1.1",
     "random-access-memory": "^3.1.1",
